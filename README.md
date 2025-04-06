@@ -72,6 +72,11 @@ $v_2$, y $v_1^\perp$ es normal (perpendicular) a $v_2$.
 
 #### Ejecución de los tests unitarios
 
+### Resultado de los tests unitarios
+
+Se muestra a continuación la ejecución en modo verboso del fichero `algebra/vectores.py`:
+
+![Resultado de los tests](img/captura_tests.png)
 
 
 
