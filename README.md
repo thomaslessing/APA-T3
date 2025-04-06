@@ -77,7 +77,7 @@ fichero `algebra/vectores.py` con la opción *verbosa*, de manera que se muestre
 resultado de la ejecución de los tests unitarios.
 
 #### Código desarrollado
-
+```
 """
 algebra/vectores.py
 
@@ -165,7 +165,7 @@ class Vector:
 if __name__ == "__main__":
     import doctest
     doctest.testmod(verbose=True)
-
+```
 #### Subida del resultado al repositorio GitHub y *pull-request*
 
 La entrega se formalizará mediante *pull request* al repositorio de la tarea.
