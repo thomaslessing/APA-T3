@@ -1,6 +1,6 @@
 # Tercera tarea de APA: Multiplicaciones de vectores y ortogonalidad
 
-## Nom i cognoms
+## Thomas Lessing Lasheras
 
 El fichero `algebra/vectores.py` incluye la definición de la clase `Vector` con los
 métodos desarrollados en clase, que incluyen la construcción, representación y
