@@ -82,6 +82,95 @@ Inserte a continuación el código de los métodos desarrollados en esta tarea, 
 comandos necesarios para que se realice el realce sintáctico en Python del mismo (no
 vale insertar una imagen o una captura de pantalla, debe hacerse en formato *markdown*).
 
+"""
+algebra/vectores.py
+
+Autor: Eduard Peñas Balart
+
+Este módulo define la clase Vector y permite realizar operaciones vectoriales como:
+
+- Suma de vectores
+- Producto por escalar
+- Producto de Hadamard
+- Producto escalar (dot product)
+- Componentes tangencial y normal respecto a otro vector
+
+>>> v1 = Vector([1, 2, 3])
+>>> v2 = Vector([4, 5, 6])
+>>> v1 * 2
+Vector([2, 4, 6])
+>>> v1 * v2
+Vector([4.0, 10.0, 18.0])
+>>> v1 @ v2
+32
+>>> v1 = Vector([2, 1, 2])
+>>> v2 = Vector([0.5, 1, 0.5])
+>>> v1 // v2
+Vector([1.0, 2.0, 1.0])
+>>> v1 % v2
+Vector([1.0, -1.0, 1.0])
+"""
+
+import math
+
+class Vector:
+    def __init__(self, componentes):
+        self.componentes = list(componentes)
+
+    def __repr__(self):
+        return f"Vector({self.componentes})"
+
+    def __add__(self, other):
+        return Vector([x + y for x, y in zip(self.componentes, other.componentes)])
+
+    def __mul__(self, other):
+        """
+        Producto de Hadamard (vector * vector) o multiplicación escalar (vector * escalar).
+        """
+        if isinstance(other, (int, float)):
+            return Vector([x * other for x in self.componentes])
+        elif isinstance(other, Vector):
+            return Vector([float(x * y) for x, y in zip(self.componentes, other.componentes)])
+        else:
+            return NotImplemented
+
+    def __rmul__(self, other):
+        return self.__mul__(other)
+
+    def __matmul__(self, other):
+        """
+        Producto escalar entre dos vectores.
+        """
+        return sum(x * y for x, y in zip(self.componentes, other.componentes))
+
+    def __floordiv__(self, other):
+        escalar = (self @ other) / (other.norma() ** 2)
+        return Vector([round(x * escalar, 6) for x in other.componentes])
+
+
+    def __mod__(self, other):
+        """
+        Componente normal (perpendicular) de este vector respecto a otro.
+
+        v1 % v2 = v1 - (v1 // v2)
+        """
+        return self - (self // other)
+
+    def norma(self):
+        """
+        Devuelve la norma (módulo) del vector.
+        """
+        return math.sqrt(sum(x**2 for x in self.componentes))
+
+    def __sub__(self, other):
+      return Vector([round(x - y, 6) for x, y in zip(self.componentes, other.componentes)])
+
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose=True)
+
 #### Subida del resultado al repositorio GitHub y *pull-request*
 
 La entrega se formalizará mediante *pull request* al repositorio de la tarea.
