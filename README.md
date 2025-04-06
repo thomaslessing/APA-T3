@@ -76,7 +76,8 @@ $v_2$, y $v_1^\perp$ es normal (perpendicular) a $v_2$.
 
 Se muestra a continuación la ejecución en modo verboso del fichero `algebra/vectores.py`:
 
-![Resultado de los tests](img/lab3.png)
+
+lab3.png
 
 
 
